@@ -18,8 +18,7 @@ return [
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
         'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
-        Sanctum::currentApplicationUrlWithPort(),
-        // Sanctum::currentRequestHost(),
+        env('APP_URL') ? ','.parse_url(env('APP_URL'), PHP_URL_HOST) : ''
     ))),
 
     /*
@@ -47,8 +46,7 @@ return [
     |
     */
 
-    'expiration' => null,
-
+    'expiration' => 60 * 24,
     /*
     |--------------------------------------------------------------------------
     | Token Prefix
@@ -80,5 +78,7 @@ return [
         'encrypt_cookies' => Illuminate\Cookie\Middleware\EncryptCookies::class,
         'validate_csrf_token' => Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
     ],
+
+    'prefix' => 'api',
 
 ];
