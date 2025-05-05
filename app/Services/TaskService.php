@@ -14,7 +14,8 @@ class TaskService
         $query = $user->tasks();
 
         if (isset($filters['completed']) && $filters['completed'] !== null) {
-            $query->where('completed', $filters['completed']);
+            $completed = filter_var($filters['completed'], FILTER_VALIDATE_BOOLEAN);
+            $query->where('completed', $completed);
         }
 
         if (isset($filters['search']) && !empty($filters['search'])) {

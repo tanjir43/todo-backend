@@ -25,7 +25,7 @@ class TaskController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $filters = $request->validate([
-            'completed'         => 'nullable|boolean',
+            'completed'         => 'nullable',
             'search'            => 'nullable|string|max:255',
             'sort_by'           => 'nullable|string|in:title,created_at,updated_at',
             'sort_direction'    => 'nullable|string|in:asc,desc',
