@@ -70,3 +70,8 @@ php artisan serve
 - **User Default**
   - Email: `test@test.com`
   - Password: `password`
+
+10. **Testing**
+```bash
+php artisan test
+```
